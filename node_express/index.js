@@ -1,12 +1,14 @@
 const express = require ('express')
 const http = require('http')
 const morgan = require('morgan')
-
+const bodyParser = require('body-parser')
+const dishRouter = require('./Routes/dishRouter')
 const hostname = 'localhost';
 const port = 3000;
 
 const app = express ();
 app.use(morgan('dev')) // dev means development version which print additional information to the screen 
+app.use('/dishes',dishRouter)
 
 app.use(express.static(__dirname+'/puplic'));
 
